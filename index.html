@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sorry, Sona 💛</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    min-height: 100vh;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: linear-gradient(135deg, #ffe9f0, #fff6e5, #f3e8ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    overflow-x: hidden;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 560px;
+    background: rgba(255,255,255,.85);
+    border-radius: 28px;
+    padding: 34px 28px;
+    text-align: center;
+    box-shadow: 0 20px 45px rgba(180,120,160,.22);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,.7);
+  }
+
+  .emoji {
+    font-size: 58px;
+    animation: float 2.6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  h1 {
+    margin-top: 12px;
+    font-size: 30px;
+    color: #b34a6a;
+  }
+
+  .name {
+    color: #e05580;
+  }
+
+  p {
+    margin-top: 16px;
+    line-height: 1.7;
+    color: #5b4a55;
+    font-size: 16px;
+  }
+
+  .message {
+    display: none;
+    margin-top: 20px;
+    text-align: left;
+    background: #fff8fb;
+    border-radius: 20px;
+    padding: 20px;
+    border: 1px dashed #f2b8cd;
+    animation: fade .7s ease forwards;
+  }
+
+  @keyframes fade {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .poem {
+    margin-top: 18px;
+    font-style: italic;
+    color: #a2496b;
+    text-align: center;
+    font-size: 15.5px;
+  }
+
+  button {
+    margin-top: 24px;
+    border: none;
+    background: linear-gradient(135deg, #ff7ba9, #ff9f68);
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+    padding: 14px 28px;
+    border-radius: 999px;
+    cursor: pointer;
+    box-shadow: 0 10px 22px rgba(255,120,160,.35);
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+
+  button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 28px rgba(255,120,160,.45);
+  }
+
+  .small {
+    margin-top: 18px;
+    font-size: 13px;
+    color: #8a7480;
+  }
+
+  .hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .heart {
+    position: absolute;
+    bottom: -40px;
+    font-size: 22px;
+    animation: rise linear forwards;
+  }
+
+  @keyframes rise {
+    to {
+      transform: translateY(-110vh) rotate(30deg);
+      opacity: 0;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="hearts" id="hearts"></div>
+
+<div class="card">
+  <div class="emoji">🥺💗</div>
+
+  <h1>Sorry, <span class="name">Sona</span></h1>
+
+  <p>
+    I know I hurt you, and I am truly sorry.  
+    Please talk to me when you feel ready — even one message is enough.
+  </p>
+
+  <button onclick="showMessage()">Tap to open my heart 💌</button>
+
+  <div class="message" id="message">
+    <p>
+      <strong>My dearest Sona,</strong><br><br>
+
+      Mujhe sach mein nahi pata tha ki us din cheezein itni badal jayengi.  
+      I am genuinely sorry for my mistake and for the hurt it caused you.
+
+      Please don’t shut me out completely.
+
+      I love you, Sona.  
+    
+    </p>
+
+    <div class="poem">
+      Tujhse roothkar main khud se bhi ruth jaata hoon,<br>
+      Maaf kardo Sona, tumhare bina main toot jaata hoon. 💛
+    </div>
+
+    <p class="small">
+      — Forever yours,  
+      <strong>Nihar</strong> ❤️
+    </p>
+  </div>
+</div>
+
+<script>
+  function showMessage() {
+    document.getElementById("message").style.display = "block";
+    spawnHearts();
+  }
+
+  function spawnHearts() {
+    const emojis = ["💗", "💖", "💛", "🩷", "💌"];
+    for (let i = 0; i < 18; i++) {
+      setTimeout(() => {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        heart.style.left = Math.random() * 95 + "vw";
+        heart.style.animationDuration = 4 + Math.random() * 3 + "s";
+        document.getElementById("hearts").appendChild(heart);
+        setTimeout(() => heart.remove(), 7500);
+      }, i * 150);
+    }
+  }
+</script>
+
+</body>
+</html>
